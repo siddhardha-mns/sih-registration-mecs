@@ -20,9 +20,11 @@ export default function ResultsPage() {
 
     const [isReleased, setIsReleased] = useState(false);
     const [timeLeft, setTimeLeft] = useState<number | null>(null);
+    const [isMounted, setIsMounted] = useState(false);
 
     // Initial check and countdown interval
     useEffect(() => {
+        setIsMounted(true);
         const checkReleaseTime = () => {
             const TARGET_TIME = new Date("2026-03-02T12:00:00+05:30").getTime();
             const now = new Date().getTime();
@@ -68,7 +70,7 @@ export default function ResultsPage() {
 
 
 
-    if (timeLeft === null) return null;
+    if (!isMounted || timeLeft === null) return null;
 
     if (!isReleased) {
         const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
@@ -97,25 +99,25 @@ export default function ResultsPage() {
                             DevCatalyst recruitment results will be unveiled soon. The countdown is on!
                         </p>
 
-                        <div className="flex justify-center gap-3 sm:gap-6 text-white font-mono">
-                            <div className="flex flex-col items-center">
-                                <div className="text-3xl sm:text-6xl md:text-7xl font-bold bg-white/5 backdrop-blur-md px-4 sm:px-6 py-4 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/10 shadow-inner">{String(days).padStart(2, '0')}</div>
-                                <div className="text-[10px] sm:text-sm uppercase tracking-[0.2em] mt-3 sm:mt-4 text-purple-300 font-sans font-semibold">Days</div>
+                        <div className="flex justify-center gap-2 sm:gap-6 text-white font-mono w-full px-1">
+                            <div className="flex flex-col items-center flex-1 sm:flex-none">
+                                <div className="text-2xl sm:text-6xl md:text-7xl font-bold bg-white/5 backdrop-blur-md px-2 sm:px-6 py-3 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/10 shadow-inner w-full min-w-[3rem] sm:min-w-[6rem] text-center">{String(days).padStart(2, '0')}</div>
+                                <div className="text-[9px] sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] mt-3 sm:mt-4 text-purple-300 font-sans font-semibold">Days</div>
                             </div>
-                            <div className="text-3xl sm:text-6xl md:text-7xl font-bold py-4 sm:py-6 opacity-30 text-purple-300">:</div>
-                            <div className="flex flex-col items-center">
-                                <div className="text-3xl sm:text-6xl md:text-7xl font-bold bg-white/5 backdrop-blur-md px-4 sm:px-6 py-4 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/10 shadow-inner">{String(hours).padStart(2, '0')}</div>
-                                <div className="text-[10px] sm:text-sm uppercase tracking-[0.2em] mt-3 sm:mt-4 text-purple-300 font-sans font-semibold">Hours</div>
+                            <div className="text-2xl sm:text-6xl md:text-7xl font-bold py-3 sm:py-6 opacity-30 text-purple-300 self-start mt-0.5 sm:mt-0">:</div>
+                            <div className="flex flex-col items-center flex-1 sm:flex-none">
+                                <div className="text-2xl sm:text-6xl md:text-7xl font-bold bg-white/5 backdrop-blur-md px-2 sm:px-6 py-3 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/10 shadow-inner w-full min-w-[3rem] sm:min-w-[6rem] text-center">{String(hours).padStart(2, '0')}</div>
+                                <div className="text-[9px] sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] mt-3 sm:mt-4 text-purple-300 font-sans font-semibold">Hours</div>
                             </div>
-                            <div className="text-3xl sm:text-6xl md:text-7xl font-bold py-4 sm:py-6 opacity-30 text-purple-300">:</div>
-                            <div className="flex flex-col items-center">
-                                <div className="text-3xl sm:text-6xl md:text-7xl font-bold bg-white/5 backdrop-blur-md px-4 sm:px-6 py-4 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/10 shadow-inner">{String(minutes).padStart(2, '0')}</div>
-                                <div className="text-[10px] sm:text-sm uppercase tracking-[0.2em] mt-3 sm:mt-4 text-purple-300 font-sans font-semibold">Mins</div>
+                            <div className="text-2xl sm:text-6xl md:text-7xl font-bold py-3 sm:py-6 opacity-30 text-purple-300 self-start mt-0.5 sm:mt-0">:</div>
+                            <div className="flex flex-col items-center flex-1 sm:flex-none">
+                                <div className="text-2xl sm:text-6xl md:text-7xl font-bold bg-white/5 backdrop-blur-md px-2 sm:px-6 py-3 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/10 shadow-inner w-full min-w-[3rem] sm:min-w-[6rem] text-center">{String(minutes).padStart(2, '0')}</div>
+                                <div className="text-[9px] sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] mt-3 sm:mt-4 text-purple-300 font-sans font-semibold">Mins</div>
                             </div>
-                            <div className="text-3xl sm:text-6xl md:text-7xl font-bold py-4 sm:py-6 opacity-30 text-purple-300">:</div>
-                            <div className="flex flex-col items-center">
-                                <div className="text-3xl sm:text-6xl md:text-7xl font-bold bg-white/5 backdrop-blur-md px-4 sm:px-6 py-4 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/10 shadow-inner">{String(seconds).padStart(2, '0')}</div>
-                                <div className="text-[10px] sm:text-sm uppercase tracking-[0.2em] mt-3 sm:mt-4 text-purple-300 font-sans font-semibold">Secs</div>
+                            <div className="text-2xl sm:text-6xl md:text-7xl font-bold py-3 sm:py-6 opacity-30 text-purple-300 self-start mt-0.5 sm:mt-0">:</div>
+                            <div className="flex flex-col items-center flex-1 sm:flex-none">
+                                <div className="text-2xl sm:text-6xl md:text-7xl font-bold bg-white/5 backdrop-blur-md px-2 sm:px-6 py-3 sm:py-6 rounded-2xl sm:rounded-3xl border border-white/10 shadow-inner w-full min-w-[3rem] sm:min-w-[6rem] text-center">{String(seconds).padStart(2, '0')}</div>
+                                <div className="text-[9px] sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] mt-3 sm:mt-4 text-purple-300 font-sans font-semibold">Secs</div>
                             </div>
                         </div>
                     </motion.div>
