@@ -40,25 +40,40 @@ export default function VantaBackground() {
         };
 
         const loadScripts = async () => {
-            // Load Three.js
-            if (!(window as any).THREE) {
+            // Check for existing three.js script or create it
+            const threeSrc = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js";
+            let existingThreeScript = document.querySelector(`script[src="${threeSrc}"]`) as HTMLScriptElement;
+
+            if (!existingThreeScript && !(window as any).THREE) {
                 threeScript = document.createElement("script");
-                threeScript.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js";
+                threeScript.src = threeSrc;
                 threeScript.async = true;
                 document.head.appendChild(threeScript);
                 await new Promise((resolve) => {
                     threeScript!.onload = resolve;
                 });
+            } else if (existingThreeScript && !(window as any).THREE) {
+                // If script tag exists but hasn't finished loading yet
+                await new Promise((resolve) => {
+                    existingThreeScript.addEventListener('load', resolve);
+                });
             }
 
-            // Load Vanta
-            if (!(window as any).VANTA || !(window as any).VANTA.WAVES) {
+            // Check for existing Vanta script or create it
+            const vantaSrc = "https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.waves.min.js";
+            let existingVantaScript = document.querySelector(`script[src="${vantaSrc}"]`) as HTMLScriptElement;
+
+            if (!existingVantaScript && (!(window as any).VANTA || !(window as any).VANTA.WAVES)) {
                 vantaScript = document.createElement("script");
-                vantaScript.src = "https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.waves.min.js"; // Using CDN for reliability
+                vantaScript.src = vantaSrc;
                 vantaScript.async = true;
                 document.head.appendChild(vantaScript);
                 await new Promise((resolve) => {
                     vantaScript!.onload = resolve;
+                });
+            } else if (existingVantaScript && (!(window as any).VANTA || !(window as any).VANTA.WAVES)) {
+                await new Promise((resolve) => {
+                    existingVantaScript.addEventListener('load', resolve);
                 });
             }
 

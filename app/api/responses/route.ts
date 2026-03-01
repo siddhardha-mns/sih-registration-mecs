@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'; // Ensure this endpoint is never cached
 export async function GET() {
     try {
         // 1. Fetch Candidate Data from CSV
-        const filePath = path.join(process.cwd(), 'public', 'assets', 'DevCatalyst-recruitment-forms.csv');
+        const filePath = path.join(process.cwd(), 'public', 'assets', 'DevCatalyst-recruitment-forms - final.csv');
         const fileContent = fs.readFileSync(filePath, 'utf8');
 
         const parsedData = Papa.parse(fileContent, {
@@ -68,14 +68,14 @@ export async function GET() {
 
         // 3. Map Rows and Merge Scores
         const formattedSubmissions = parsedData.data.map((row: any) => {
-            const roll_number = row['Roll Number'] || '';
+            const roll_number = row['Roll-No'] || row['Roll Number'] || '';
             const submission: any = {
                 timestamp: row['Timestamp'] || '',
-                full_name: row['Full Name'] || '',
+                full_name: row['Name '] || row['Name'] || row['Full Name'] || '',
                 roll_number: roll_number,
                 branch: row['Branch'] || '',
                 section: row['Section'] || '',
-                selected_track: row['Selected Track'] || '',
+                selected_track: row['Track'] || row['Selected Track'] || '',
                 email: row['Email'] || '',
                 phone: row['Phone'] || '',
                 core_response_score: coreScores[roll_number] || null,
@@ -85,7 +85,7 @@ export async function GET() {
                 outreach_response_score: outreachScores[roll_number] || null
             };
 
-            const coreFields = ['Timestamp', 'Full Name', 'Roll Number', 'Branch', 'Section', 'Selected Track', 'Phone'];
+            const coreFields = ['Timestamp', 'Full Name', 'Name ', 'Name', 'Roll Number', 'Roll-No', 'Branch', 'Section', 'Selected Track', 'Track', 'Phone', 'Email', 'Why Join', 'Goals'];
 
             for (const key of Object.keys(row)) {
                 if (!coreFields.includes(key) && row[key] !== undefined && row[key] !== '') {

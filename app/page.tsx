@@ -198,7 +198,7 @@ export default function Home() {
               Results
             </motion.h2>
             <motion.p
-              className="text-gray-200 mb-8 max-w-lg mx-auto"
+              className="text-gray-100 text-md mb-8 max-w-lg mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
