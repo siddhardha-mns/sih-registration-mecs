@@ -35,6 +35,8 @@ export default function Home() {
         subtitle="DevCatalyst is a vibrant community of developers and creators who build, learn, and grow together. Team up with us for SIH 2026."
         ctaLabel="Register for SIH 2026"
         ctaHref="/sih"
+        cta2Label="Join Participants Group"
+        cta2Href="https://chat.whatsapp.com/FSacsjMdKR35t9MJpkXLQL?s=sh&p=i&mlu=4"
       />
 
       {/* About / Video Section */}
