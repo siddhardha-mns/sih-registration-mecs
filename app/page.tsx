@@ -20,13 +20,13 @@ export default function Home() {
       {/* Hero Section */}
       <Hero
         eyebrow={
-          <div className="flex items-center gap-5 sm:gap-7 select-none">
+          <div className="flex items-center gap-3 sm:gap-5 md:gap-7 select-none">
             <Image
               src={devCatalystLogo}
               alt="DevCatalyst Logo"
-              className="h-20 sm:h-28 md:h-36 w-auto grayscale brightness-0"
+              className="h-12 sm:h-20 md:h-28 lg:h-36 w-auto grayscale brightness-0"
             />
-            <span className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter text-black">
+            <span className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-black">
               DevCatalyst
             </span>
           </div>

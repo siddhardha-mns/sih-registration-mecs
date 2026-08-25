@@ -60,12 +60,12 @@ export default function DynamicIslandNav({ sections }: DynamicIslandNavProps) {
                     transition={{ duration: 0.5, ease: [0.6, -0.05, 0.01, 0.99] }}
                 >
                     <motion.div
-                        className="relative flex items-center gap-2 px-4 py-3 rounded-full bg-black/40 backdrop-blur-xl border border-white/15 shadow-[0_0_30px_rgba(255,255,255,0.15),0_0_60px_rgba(255,255,255,0.08),0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)]"
+                        className="relative flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 sm:py-3 rounded-full bg-black/40 backdrop-blur-xl border border-white/15 shadow-[0_0_30px_rgba(255,255,255,0.15),0_0_60px_rgba(255,255,255,0.08),0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)]"
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                         animate={{
-                            paddingLeft: isHovered ? 20 : 16,
-                            paddingRight: isHovered ? 20 : 16,
+                            paddingLeft: isHovered ? 20 : 12,
+                            paddingRight: isHovered ? 20 : 12,
                         }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
@@ -76,11 +76,11 @@ export default function DynamicIslandNav({ sections }: DynamicIslandNavProps) {
                             <motion.button
                                 key={section.id}
                                 onClick={() => scrollTo(section.id)}
-                                className="relative z-10 px-6 py-2.5 rounded-full text-base font-bold transition-colors duration-200 cursor-pointer"
+                                className="relative z-10 px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-xs sm:text-sm md:text-base font-bold transition-colors duration-200 cursor-pointer"
                                 animate={{
                                     color: activeIndex === index ? "#ffffff" : "rgba(255,255,255,0.5)",
-                                    paddingLeft: isHovered ? 26 : 24,
-                                    paddingRight: isHovered ? 26 : 24,
+                                    paddingLeft: isHovered ? 22 : 20,
+                                    paddingRight: isHovered ? 22 : 20,
                                 }}
                                 whileHover={{ color: "#ffffff" }}
                                 transition={{ duration: 0.2 }}

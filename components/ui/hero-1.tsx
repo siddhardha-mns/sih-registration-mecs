@@ -58,18 +58,18 @@ export function Hero({
 
       {/* Title */}
       <h1
-        className="text-balance 
-        text-black py-6 text-5xl font-semibold leading-none tracking-tighter 
-        sm:text-6xl md:text-7xl lg:text-8xl"
+        className="animate-fade-in -translate-y-4 text-balance 
+        text-black py-4 sm:py-6 text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-none tracking-tighter 
+        opacity-0"
       >
         {title}
       </h1>
 
       {/* Subtitle */}
       <p
-        className="mb-12 text-balance 
-        text-lg tracking-tight text-gray-800 
-        md:text-xl"
+        className="animate-fade-in mb-8 sm:mb-12 -translate-y-4 text-balance 
+        text-base sm:text-lg tracking-tight text-gray-800 
+        opacity-0 md:text-xl"
       >
         {subtitle}
       </p>
