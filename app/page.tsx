@@ -2,104 +2,43 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import devCatalystLogo from "../public/assets/DevCatalyst_logo.png";
-import VantaBackground from "./components/VantaBackground";
+import { Hero } from "@/components/ui/hero-1";
 import DynamicIslandNav from "./components/DynamicIslandNav";
-import { useEffect, useState } from "react";
+import devCatalystLogo from "../public/assets/DevCatalyst_logo.png";
 
 const NAV_SECTIONS = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },
-  // { id: "join", label: "Join Us" },
-  { id: "join", label: "Results" },
+  { id: "join", label: "Register" },
 ];
 
 export default function Home() {
-  const DEADLINE = new Date("2026-02-25T13:00:00+05:30").getTime();
-  const [timeLeft, setTimeLeft] = useState<{ days: number, hours: number, minutes: number, seconds: number } | null>(null);
-
-  useEffect(() => {
-    const updateCountdown = () => {
-      const now = new Date().getTime();
-      const difference = DEADLINE - now;
-
-      if (difference <= 0) {
-        setTimeLeft(null);
-      } else {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((difference % (1000 * 60)) / 1000)
-        });
-      }
-    };
-
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const staggerContainer = {
-    initial: {},
-    whileInView: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    },
-    viewport: { once: true, margin: "-100px" }
-  };
-
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white dark:bg-black">
       <DynamicIslandNav sections={NAV_SECTIONS} />
-
-      {/* Hero with media */}
-      <section id="hero" className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden text-white">
-        {/* Vanta Background */}
-        <VantaBackground />
-        <motion.div
-          className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
-        >
-          <motion.h1
-            className="flex items-center justify-center gap-3 sm:gap-4 text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
-          >
+      
+      {/* Hero Section */}
+      <Hero
+        eyebrow={
+          <div className="flex items-center gap-5 sm:gap-7 select-none">
             <Image
               src={devCatalystLogo}
               alt="DevCatalyst Logo"
-              className="h-10 sm:h-14 md:h-16 w-auto"
+              className="h-20 sm:h-28 md:h-36 w-auto grayscale brightness-0"
             />
-            <span>DevCatalyst Club</span>
-          </motion.h1>
-          <motion.h1
-            className="text-5xl sm:text-7xl md:text-8xl font-bold text-white mb-6 tracking-tighter"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.6, -0.05, 0.01, 0.99] }}
-          >
-            Learn. Build. <span className="text-[#3b82f6]">Grow.</span>
-          </motion.h1>
-          <motion.p
-            className="text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.6, -0.05, 0.01, 0.99] }}
-          >
-            Where developers and creators learn, build, and grow together.
-          </motion.p>
+            <span className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter text-black">
+              DevCatalyst
+            </span>
+          </div>
+        }
+        title="Learn. Build. Grow. Together."
+        subtitle="DevCatalyst is a vibrant community of developers and creators who build, learn, and grow together. Team up with us for SIH 2026."
+        ctaLabel="Register for SIH 2026"
+        ctaHref="/sih"
+      />
 
-        </motion.div>
-      </section>
-
-      {/* Video Section */}
-      <section id="about" className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* About / Video Section */}
+      <section id="about" className="relative w-full min-h-dvh snap-start flex flex-col items-center justify-center overflow-hidden py-16">
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full z-0">
           <video
@@ -117,167 +56,73 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            className="bg-black/50 backdrop-blur-md rounded-2xl shadow-[0_0_40px_rgba(244,244,244,0.3),0_0_80px_rgba(244,244,244,0.15)] border border-white/20 p-8 sm:p-12 text-center"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] }}
+          <div
+            className="bg-black/50 backdrop-blur-md rounded-2xl shadow-[0_0_40px_rgba(244,244,244,0.3),0_0_80px_rgba(244,244,244,0.15)] border border-white/20 p-6 sm:p-12 text-center"
           >
-            <motion.h2
-              className="text-5xl sm:text-5xl font-semibold text-white mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.6, -0.05, 0.01, 0.99] }}
+            <h2
+              className="text-3xl sm:text-5xl font-semibold text-white mb-4"
             >
               About DevCatalyst
-            </motion.h2>
-            <motion.p
-              className="text-lg sm:text-1xl text-gray-200 max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
+            </h2>
+            <p
+              className="text-base sm:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed"
             >
-              DevCatalyst is a vibrant community of developers and creators who learn, build, and grow together.
-              We run workshops, hackathons, and collaborative projects across Technical, Social, Content, and
-              Outreach tracks — helping you level up your skills, gain hands-on experience, and make a real impact.
-            </motion.p>
-          </motion.div>
+              Learn and build through technical sessions, workshops, and projects. Connect with developers and creators, collaborate on ideas, and grow alongside a community of builders. Participate in hackathons and gain practical experience while solving real-world problems.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* CTA at the bottom */}
-      <section id="join" className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* Collage.svg Background */}
+      {/* SIH Registration CTA Section */}
+      <section id="join" className="relative w-full min-h-dvh snap-start flex flex-col items-center justify-center overflow-hidden py-16">
+        {/* Collage Background */}
         <div className="absolute inset-0 w-full h-full z-0">
           <img
             src="/assets/Collage.png"
-            alt=""
+            alt="DevCatalyst Community Collage"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
-          <motion.div
-            className="bg-white/10 backdrop-blur-md rounded-2xl shadow-[0_0_40px_rgba(244,244,244,0.3),0_0_80px_rgba(244,244,244,0.15)] border border-white/20 p-8 sm:p-12 text-center"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] }}
-          >
-            {/*
-            <motion.h2
-              className="text-2xl sm:text-3xl font-semibold text-white mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.6, -0.05, 0.01, 0.99] }}
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <div>
+            {/* SIH Badge */}
+            <div
+              className="inline-flex items-center gap-2 bg-blue-500/20 border border-blue-400/40 text-blue-300 text-sm font-semibold px-4 py-2 rounded-full mb-6 backdrop-blur-sm"
             >
-              Ready to be part of the community?
-            </motion.h2>
-            <motion.p
-              className="text-gray-200 mb-8 max-w-lg mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
-            >
-              Fill out the recruitment form and we&apos;ll get in touch. We can&apos;t wait to meet you.
-            </motion.p>
-            */}
-            <motion.h2
-              className="text-2xl sm:text-3xl font-semibold text-white mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.6, -0.05, 0.01, 0.99] }}
-            >
-              Results
-            </motion.h2>
-            <motion.p
-              className="text-gray-100 text-md mb-8 max-w-lg mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2, ease: [0.6, -0.05, 0.01, 0.99] }}
-            >
-              The moment you&apos;ve been waiting for is here. Click below to see the results
-              and find out if you&apos;ve made it to the next stage of our journey!
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.3, ease: [0.6, -0.05, 0.01, 0.99] }}
-              className="flex flex-col items-center gap-8"
-            >
-              {/* 
-              <Link
-                href="/form"
-                className="group relative inline-flex overflow-hidden items-center justify-center gap-2 bg-purple-800 text-white font-semibold px-8 py-4 rounded-md shadow transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
-              >
-                <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-60" />
-                <span className="relative z-10 flex items-center gap-2">
-                  <Image
-                    src={devCatalystLogo}
-                    alt="DevCatalyst Logo"
-                    className="w-8 h-8 object-contain transition-all duration-300 group-hover:brightness-150 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
-                  />
-                  Join Community
-                </span>
-              </Link>
-              */}
-              <Link
-                href="/results"
-                className="group relative inline-flex overflow-hidden items-center justify-center gap-2 bg-purple-800 text-white font-semibold px-8 py-4 rounded-md shadow transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
-              >
-                <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-60" />
-                <span className="relative z-10 flex items-center gap-2">
-                  <Image
-                    src={devCatalystLogo}
-                    alt="DevCatalyst Logo"
-                    className="w-8 h-8 object-contain transition-all duration-300 group-hover:brightness-150 group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]"
-                  />
-                  Results
-                </span>
-              </Link>
+              <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+              Smart India Hackathon 2026
+            </div>
 
-              {timeLeft && (
-                <div className="flex justify-center items-center gap-3 sm:gap-4 text-white">
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl sm:text-3xl font-bold bg-white/10 px-3 py-2 rounded-lg border border-white/20 shadow-inner backdrop-blur-sm min-w-[50px] sm:min-w-[60px]">
-                      {String(timeLeft.days).padStart(2, '0')}
-                    </span>
-                    <span className="text-[10px] sm:text-xs uppercase mt-2 opacity-70 tracking-wider font-medium">Days</span>
-                  </div>
-                  <span className="text-2xl sm:text-3xl font-light opacity-50 mb-6">:</span>
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl sm:text-3xl font-bold bg-white/10 px-3 py-2 rounded-lg border border-white/20 shadow-inner backdrop-blur-sm min-w-[50px] sm:min-w-[60px]">
-                      {String(timeLeft.hours).padStart(2, '0')}
-                    </span>
-                    <span className="text-[10px] sm:text-xs uppercase mt-2 opacity-70 tracking-wider font-medium">Hrs</span>
-                  </div>
-                  <span className="text-2xl sm:text-3xl font-light opacity-50 mb-6">:</span>
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl sm:text-3xl font-bold bg-white/10 px-3 py-2 rounded-lg border border-white/20 shadow-inner backdrop-blur-sm min-w-[50px] sm:min-w-[60px]">
-                      {String(timeLeft.minutes).padStart(2, '0')}
-                    </span>
-                    <span className="text-[10px] sm:text-xs uppercase mt-2 opacity-70 tracking-wider font-medium">Min</span>
-                  </div>
-                  <span className="text-2xl sm:text-3xl font-light opacity-50 mb-6">:</span>
-                  <div className="flex flex-col items-center">
-                    <span className="text-2xl sm:text-3xl font-bold bg-white/10 px-3 py-2 rounded-lg border border-white/20 shadow-inner backdrop-blur-sm min-w-[50px] sm:min-w-[60px] text-purple-300">
-                      {String(timeLeft.seconds).padStart(2, '0')}
-                    </span>
-                    <span className="text-[10px] sm:text-xs uppercase mt-2 opacity-70 tracking-wider font-medium">Sec</span>
-                  </div>
-                </div>
-              )}
-            </motion.div>
-          </motion.div>
+            <h2
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-5 leading-tight"
+            >
+              Register for <span className="text-[#3b82f6]">SIH</span> with DevCatalyst
+            </h2>
+
+            <p
+              className="text-gray-300 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            >
+              DevCatalyst is coordinating the Internal Hackathon for Smart India Hackathon 2026. Complete the registration to get started.
+            </p>
+
+            <div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <Link
+                href="/sih"
+                id="sih-register-btn"
+                className="group relative inline-flex overflow-hidden items-center justify-center gap-2 bg-[#3b82f6] hover:bg-blue-500 text-white font-bold px-12 py-5 rounded-xl shadow-[0_0_40px_rgba(59,130,246,0.5)] transition-all duration-300 ease-out hover:shadow-[0_0_60px_rgba(59,130,246,0.8)] hover:scale-105 text-lg md:text-xl"
+              >
+                <span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-60" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                </svg>
+                <span className="relative z-10">Register Now</span>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </div>
