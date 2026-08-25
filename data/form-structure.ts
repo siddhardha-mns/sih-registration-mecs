@@ -161,7 +161,7 @@ What you’ll do:
 
 🔹 Technical Team
 The Technical Team is the backbone of our club’s digital infrastructure. From building platforms to maintaining tools, this team turns ideas into real, working solutions.
-Fun fact: the recruitment website you’re filling right now is built and maintained by this team.
+Fun fact: the SIH registration website you’re filling right now is built and maintained by this team.
 What you’ll do:
 • Develop and maintain the club’s website and internal tools
 • Build platforms used for events, registrations, and workflows

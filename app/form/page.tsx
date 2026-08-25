@@ -310,7 +310,7 @@ export default function FormPage() {
               className="w-10 h-10 object-contain"
             />
             <h1 className="text-3xl font-bold text-[#202124]">
-              DevCatalyst Recruitment Drive
+              SIH Registration MECS
             </h1>
           </div>
           <p className="text-sm text-[#202124] mb-4">
@@ -367,7 +367,7 @@ export default function FormPage() {
               Registration Closed
             </h1>
             <p className="text-lg text-gray-600 mb-8 max-w-lg mx-auto">
-              We're no longer accepting new applications for the DevCatalyst Recruitment Drive as the deadline has passed.
+              We're no longer accepting new applications for SIH Registration MECS as the deadline has passed.
             </p>
             <div className="bg-red-50 p-6 rounded-lg border border-red-100 mb-8 w-full max-w-md">
               <p className="text-red-800 font-medium">

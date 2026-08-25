@@ -12,7 +12,7 @@ export default function FormHeader() {
                         className="w-10 h-10 object-contain"
                     />
                     <h1 className="text-[32px] leading-[40px] font-bold text-[#202124]">
-                        DevCatalyst Recruitment Drive
+                        SIH Registration MECS
                     </h1>
                 </div>
                 <div className="text-sm text-[#202124] whitespace-pre-wrap mb-4">

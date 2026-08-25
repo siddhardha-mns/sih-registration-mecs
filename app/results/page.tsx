@@ -96,7 +96,7 @@ export default function ResultsPage() {
                             The Wait is Almost Over
                         </h1>
                         <p className="text-gray-300 text-base sm:text-xl md:text-2xl mb-10 max-w-2xl mx-auto font-medium">
-                            DevCatalyst recruitment results will be unveiled soon. The countdown is on!
+                            SIH Registration MECS results will be unveiled soon. The countdown is on!
                         </p>
 
                         <div className="flex justify-center gap-2 sm:gap-6 text-white font-mono w-full px-1">
