@@ -11,7 +11,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "DevCatalyst Recruitment Form",
+  title: "sih-registration-mecs",
   description: "Join the team!",
 };
 
