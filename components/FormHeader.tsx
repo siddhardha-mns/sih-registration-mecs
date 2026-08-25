@@ -17,8 +17,8 @@ export default function FormHeader() {
                 </div>
                 <div className="text-sm text-[#202124] whitespace-pre-wrap mb-4">
                     <p className="mb-2">
-                        Join the team of passionate developers and creators!
-                        We are looking for individuals who are ready to learn, build, and grow.
+                        SIH 2026 Internal Hackathon Registration
+                        Smart India Hackathon 2026
                     </p>
                     <p className="font-bold text-[16px]">
                         Deadline: 25th February 2026, 01:00 PM
