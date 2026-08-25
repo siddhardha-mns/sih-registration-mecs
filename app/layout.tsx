@@ -12,7 +12,18 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "sih-registration-mecs",
-  description: "Join the team!",
+  description: "SIH Registration MECS - Smart India Hackathon 2026",
+  openGraph: {
+    title: "sih-registration-mecs",
+    description: "SIH Registration MECS - Smart India Hackathon 2026",
+    siteName: "sih-registration-mecs",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "sih-registration-mecs",
+    description: "SIH Registration MECS - Smart India Hackathon 2026",
+  },
 };
 
 export default function RootLayout({
